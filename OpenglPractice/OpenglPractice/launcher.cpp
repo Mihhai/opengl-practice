@@ -1,4 +1,7 @@
+#include "2dshapes_definitions.h"
+
 int main()
 {
-	return 0;
+	//draw_2d_shapes();
+	ex1();
 }

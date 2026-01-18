@@ -1,6 +1,6 @@
-#include "definitions.h"
+#include "2dshapes_definitions.h"
 
-int main() {
+int ex1() {
 	// Initialize GLFW
 	if (!glfwInit()) {
 		std::cout << "Failed to initialize GLFW" << std::endl;
@@ -35,17 +35,15 @@ int main() {
 
 	// Define the input vertex data for a triangle
 	float vertices[] = {
-		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right
-	   -0.5f, -0.5f, 0.0f,  // bottom left
-	   -0.5f,  0.5f, 0.0f
-	};
-	unsigned int indices[] = {  // note that we start from 0!
-		0, 1, 3,  // first Triangle
-		1, 2, 3   // second Triangle
+		-0.5f, 0.5f, 0.0f,
+		-0.8f, 0.2f, 0.0f,
+	    -0.1f, 0.2f, 0.0f,
+	    0.5f, -0.5f, 0.0f,
+	    0.8f,  -0.2f, 0.0f,
+		0.1f,  -0.2f, 0.0f
 	};
 
-	unsigned int EBO, VBO, VAO;
+	unsigned int VBO, VAO;
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
@@ -53,12 +51,8 @@ int main() {
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	glGenBuffers(1, &EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
 	// Upload vertex data to the currently bound GL_ARRAY_BUFFER
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);//copy data to gpu
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);// instructions for interpreting the first vertex attribute
 	glEnableVertexAttribArray(0);// enable the vertex attribute for the vao
 
@@ -119,7 +113,9 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		/*glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 3, 3);*/
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		processInput(window);
 		glfwSwapBuffers(window);

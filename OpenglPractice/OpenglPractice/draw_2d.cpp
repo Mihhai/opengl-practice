@@ -1,6 +1,6 @@
-#include "definitions.h"
+#include "2dshapes_definitions.h"
 
-int main() {
+int draw_2d_shapes() {
 	// Initialize GLFW
 	if (!glfwInit()) {
 		std::cout << "Failed to initialize GLFW" << std::endl;

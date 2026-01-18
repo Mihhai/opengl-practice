@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="definitions.h">
+    <ClInclude Include="2dshapes_definitions.h">
       <Filter>Source Files\2DShapes</Filter>
     </ClInclude>
   </ItemGroup>
