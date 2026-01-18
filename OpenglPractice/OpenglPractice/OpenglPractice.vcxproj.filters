@@ -30,6 +30,12 @@
     <ClCompile Include="draw_2d.cpp">
       <Filter>Source Files\2DShapes</Filter>
     </ClCompile>
+    <ClCompile Include="ex2.cpp">
+      <Filter>Source Files\2DShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ex3.cpp">
+      <Filter>Source Files\2DShapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2dshapes_definitions.h">

@@ -1,8 +1,8 @@
-// 1. Try to draw 2 triangles next to each other using glDrawArrays by adding more vertices to your data
+// 2.Create the same 2 triangles using two different VAOs and VBOs for their data (this uses only one VBO)
 
 #include "2dshapes_definitions.h"
 
-int ex1() {
+int ex2() {
 	// Initialize GLFW
 	if (!glfwInit()) {
 		std::cout << "Failed to initialize GLFW" << std::endl;
@@ -35,42 +35,47 @@ int ex1() {
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	// Define the input vertex data for a triangle
 	float vertices[] = {
 		-0.5f, 0.5f, 0.0f,
 		-0.8f, 0.2f, 0.0f,
-	    -0.1f, 0.2f, 0.0f,
-	    0.5f, -0.5f, 0.0f,
-	    0.8f,  -0.2f, 0.0f,
+		-0.1f, 0.2f, 0.0f,
+		// 2nd triangle
+		0.5f, -0.5f, 0.0f,
+		0.8f,  -0.2f, 0.0f,
 		0.1f,  -0.2f, 0.0f
 	};
 
-	unsigned int VBO, VAO;
+	unsigned int VBO, VAO1, VAO2;
 
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
+	glGenVertexArrays(1, &VAO1);
+	glGenVertexArrays(1, &VAO2);
+
+	glBindVertexArray(VAO1);
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	// Upload vertex data to the currently bound GL_ARRAY_BUFFER
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);//copy data to gpu
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);// instructions for interpreting the first vertex attribute
-	glEnableVertexAttribArray(0);// enable the vertex attribute for the vao
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);// unbind VAO1
 
-	// Create and compile vertex shader
+	// create 2nd VAO for the 2nd triangle
+	glBindVertexArray(VAO2);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * 3 * sizeof(float)));
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);// unbind VAO2
+
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
-	// Create and compile fragment shader
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
-	// Check for shader compilation errors
 	int vertexShaderSuccess;
 	int fragmentShaderSuccess;
 	char vertexShaderInfoLog[512];
@@ -86,7 +91,6 @@ int ex1() {
 		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << fragmentShaderInfoLog << std::endl;
 	}
 
-	// Create shader program and link shaders
 	unsigned int shaderProgram;
 	shaderProgram = glCreateProgram();
 	glAttachShader(shaderProgram, vertexShader);
@@ -112,9 +116,12 @@ int ex1() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
-		/*glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawArrays(GL_TRIANGLES, 3, 3);*/
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		glBindVertexArray(VAO1);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glBindVertexArray(VAO2);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		processInput(window);
 		glfwSwapBuffers(window);

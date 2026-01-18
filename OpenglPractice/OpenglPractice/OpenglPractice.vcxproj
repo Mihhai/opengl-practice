@@ -133,6 +133,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ex1.cpp" />
+    <ClCompile Include="ex2.cpp" />
+    <ClCompile Include="ex3.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="launcher.cpp" />
     <ClCompile Include="draw_2d.cpp" />

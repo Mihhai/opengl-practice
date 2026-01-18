@@ -30,6 +30,18 @@ static const char* fragmentShaderSource =
 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 "}\n\0";
 
+static const char* fragmentShaderSourceYellow =
+"#version 330 core\n"
+"out vec4 FragColor;\n"
+"void main()\n"
+"{\n"
+"   FragColor = vec4(1.0f, 1.0f, 0.0f, 1.0f);\n"
+"}\n\0";
+
 int draw_2d_shapes();
 
 int ex1();
+
+int ex2();
+
+int ex3();
