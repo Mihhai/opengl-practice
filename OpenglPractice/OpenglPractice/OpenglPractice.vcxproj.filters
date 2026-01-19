@@ -16,6 +16,9 @@
     <Filter Include="Source Files\2DShapes">
       <UniqueIdentifier>{f96f9530-cd39-4b45-9838-465dd702af29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\shaders">
+      <UniqueIdentifier>{3f0d6c14-8d5a-4b74-9e91-f0c829fd4646}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="ex3.cpp">
       <Filter>Source Files\2DShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders_basics.cpp">
+      <Filter>Source Files\shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

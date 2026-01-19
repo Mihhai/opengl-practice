@@ -5,5 +5,8 @@ int main()
 	//draw_2d_shapes();
 	//ex1();
 	//ex2();
-	ex3();
+	//ex3();
+
+	shader_basics();
+
 }

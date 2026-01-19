@@ -138,6 +138,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="launcher.cpp" />
     <ClCompile Include="draw_2d.cpp" />
+    <ClCompile Include="shaders_basics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2dshapes_definitions.h" />
