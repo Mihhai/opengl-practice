@@ -42,10 +42,24 @@
     <ClCompile Include="shaders_basics.cpp">
       <Filter>Source Files\shaders</Filter>
     </ClCompile>
+    <ClCompile Include="shaders.h">
+      <Filter>Source Files\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders_ex2.cpp">
+      <Filter>Source Files\shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2dshapes_definitions.h">
       <Filter>Source Files\2DShapes</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vertex_shader.vert">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="fragment_shader.frag">
+      <Filter>Source Files\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

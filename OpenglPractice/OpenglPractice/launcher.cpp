@@ -7,6 +7,9 @@ int main()
 	//ex2();
 	//ex3();
 
-	shader_basics();
+	/*shader_basics();*/
+
+	shaders_ex2();
+
 
 }

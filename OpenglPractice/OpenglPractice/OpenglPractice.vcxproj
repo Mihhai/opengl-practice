@@ -138,10 +138,16 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="launcher.cpp" />
     <ClCompile Include="draw_2d.cpp" />
+    <ClCompile Include="shaders.h" />
     <ClCompile Include="shaders_basics.cpp" />
+    <ClCompile Include="shaders_ex2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2dshapes_definitions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fragment_shader.frag" />
+    <None Include="vertex_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

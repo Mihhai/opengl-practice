@@ -47,3 +47,5 @@ int ex2();
 int ex3();
 
 int shader_basics();
+
+int shaders_ex2();
